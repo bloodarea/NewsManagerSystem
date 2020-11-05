@@ -21,7 +21,7 @@
 						<li><a href="index.jsp" class="header">首页</a></li>
 						<hr />
 						<li><a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=1">所有新闻</a></li>
-						<li><a href="#">添加新闻</a></li>
+						<li><a href="AddNews.jsp">添加新闻</a></li>
 					</ul>
 				</div>
 				<div class="content">
@@ -30,5 +30,5 @@
 				</div>
 			</div>
 		</div>
-		</body>
+	</body>
 </html>

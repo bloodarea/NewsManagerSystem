@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.hnjdzy.news.dao.NewsDao;
 import com.hnjdzy.news.dao.impl.NewsDaoImpl;
+import com.hnjdzy.news.entity.News;
 import com.hnjdzy.news.entity.NewsPage;
 
 public class testNewsPage {
@@ -21,13 +22,18 @@ public class testNewsPage {
 			np = new NewsPage();
 			np.setCurrPage(currPage);
 			np.setPageSize(13);
-			np.setPageList(ndi.findNewsByPage(np.getCurrPage(),np.getPageSize()));
+			np.setPageList(
+					ndi.findNewsByPage(
+							(np.getCurrPage() - 1) * np.getPageSize(),
+							 np.getPageSize()));
 			np.setTotalSize(ndi.findAllNews().size());
 			np.setTotalPage(np.getTotalSize());
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(np.getTotalSize());
+		for (News n : np.getPageList()) {
+			System.out.println(n.getNid());
+		}
 	}
 
 }

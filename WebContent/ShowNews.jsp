@@ -4,16 +4,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查看新闻</title>
+<title>新闻管理系统 - 查看新闻</title>
 <style type="text/css">
-	body{
-		padding: 150px 180px;
-	}
+	@import url("./css/index.css");
+	@import url("./css/AllNews.css");
 </style>
 </head>
-<body>
-	<h2>查看新闻</h2>
-	<table border="1" cellpadding="5" cellspacing="0">
+	<body>
+		<div id="page">
+			<div class="top">
+				<h1><span class="darkblue">新闻</span><span class="blue">管理</span><span class="royalblue">系统</span> — 查看新闻</h1>
+				<hr />
+			</div>
+			<div class="main">
+				<div class="left-list">
+					<ul>
+						<li><a href="index.jsp" class="header">首页</a></li>
+						<hr />
+						<li><a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=1">所有新闻</a></li>
+						<li><a href="AddNews.jsp">添加新闻</a></li>
+					</ul>
+				</div>
+				<div class="content">
+					<table border="1" cellpadding="5" cellspacing="0">
 		<tr>
 			<td style="width: 120px;">新闻ID：</td>
 			<td>${news.nid}</td>
@@ -40,7 +53,7 @@
 		</tr>
 		<tr>
 			<td>新闻内容：</td>
-			<td style="width: 700px;">${news.ncontent}</td>
+			<td style="width: 1000px;">${news.ncontent}</td>
 		</tr>
 		<tr>
 			<td>新闻修改时间：</td>
@@ -51,5 +64,8 @@
 			<td>${news.nsummary}</td>
 		</tr>
 	</table>
-</body>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

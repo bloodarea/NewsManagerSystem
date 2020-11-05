@@ -1,0 +1,15 @@
+.footer{
+	font-size: 22px;
+}
+.footer a{
+	color: blue;
+}
+.footer a:hover{
+	color: purple;
+}
+.content table{
+	background-color: white;
+}
+.content td{
+	padding: 5px;
+}

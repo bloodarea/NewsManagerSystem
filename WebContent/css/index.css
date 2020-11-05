@@ -34,7 +34,7 @@ body{
 	display: inline-block;
 	background: linear-gradient(skyblue,royalblue,blue);
 	width: 150px;
-	height: 1050px;
+	height: 900px;
 }
 .left-list li{
 	padding-left: 25px;
@@ -60,7 +60,7 @@ body{
 	float: left;
 	display: inline-block;
 	width: 1350px;
-	height: 1000px;
+	height: 800px;
 	padding: 25px;
 	text-align: center;
 }

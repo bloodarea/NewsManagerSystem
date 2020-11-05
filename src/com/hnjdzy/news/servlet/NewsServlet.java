@@ -54,14 +54,16 @@ public class NewsServlet extends HttpServlet{
 			try {
 				ndi.delNews(Integer.parseInt(request.getParameter("nid")));
 			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//弹出提示窗口
 			out.print("<script type=\"text/javascript\">");
             out.print("alert(\"删除成功!，点击确认返回全部新闻页面\");");
-            out.print("location.href=\"AllNewsList.jsp\";");
+            out.print("location.href=\"NewsServlet?func=allNews&currpage=1\";");
             out.print("</script>");
 		}else if("setNews".equals(func)) {
 			if(request.getParameter("nid") != null) {
@@ -95,11 +97,14 @@ public class NewsServlet extends HttpServlet{
 			try {
 				np = new NewsPage();
 				np.setCurrPage(currPage);
-				np.setPageSize(13);
-				np.setPageList(ndi.findNewsByPage(np.getCurrPage(),np.getPageSize()));
+				np.setPageSize(12);
+				np.setPageList(
+						ndi.findNewsByPage(
+								(np.getCurrPage() - 1) * np.getPageSize(),
+								 np.getPageSize()));
 				np.setTotalSize(ndi.findAllNews().size());
 				np.setTotalPage(np.getTotalSize());
-			}catch(SQLException e){
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			request.setAttribute("NewsPage", np);
@@ -135,7 +140,7 @@ public class NewsServlet extends HttpServlet{
 			//弹出提示窗口
 			out.print("<script type=\"text/javascript\">");
             out.print("alert(\"添加成功!，点击确认返回全部新闻页面\");");
-            out.print("location.href=\"AllNewsList.jsp\";");
+            out.print("location.href=\"NewsServlet?func=allNews&currpage=1\";");
             out.print("</script>");
 		}else if("delNews".equals(func)) {	//删除多个新闻
 			for(String nid:request.getParameterValues("nids")) {
@@ -150,7 +155,7 @@ public class NewsServlet extends HttpServlet{
 			//弹出提示窗口
 			out.print("<script type=\"text/javascript\">");
             out.print("alert(\"删除成功!，点击确认返回全部新闻页面\");");
-            out.print("location.href=\"AllNewsList.jsp\";");
+            out.print("location.href=\"NewsServlet?func=allNews&currpage=1\";");
             out.print("</script>");
 		}else if("setNews".equals(func)) {
 			News news = new News();
@@ -176,7 +181,7 @@ public class NewsServlet extends HttpServlet{
 			//弹出提示窗口
 			out.print("<script type=\"text/javascript\">");
             out.print("alert(\"修改成功!，点击确认返回全部新闻页面\");");
-            out.print("location.href=\"AllNewsList.jsp\";");
+            out.print("location.href=\"NewsServlet?func=allNews&currpage=1\";");
             out.print("</script>");
 		}
 	}

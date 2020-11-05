@@ -9,6 +9,7 @@
 <head>
 <style>
 	@import url("./css/index.css");
+	@import url("./css/AllNews.css");
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>新闻管理系统 - 所有新闻</title>
@@ -16,7 +17,7 @@
 	<body>
 		<div id="page">
 			<div class="top">
-				<h1><span class="darkblue">新闻</span><span class="blue">管理</span><span class="royalblue">系统</span> — 首页</h1>
+				<h1><span class="darkblue">新闻</span><span class="blue">管理</span><span class="royalblue">系统</span> — 所有新闻</h1>
 				<hr />
 			</div>
 			<div class="main">
@@ -25,7 +26,7 @@
 						<li><a href="index.jsp" class="header">首页</a></li>
 						<hr />
 						<li><a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=1">所有新闻</a></li>
-						<li><a href="#">添加新闻</a></li>
+						<li><a href="AddNews.jsp">添加新闻</a></li>
 					</ul>
 				</div>
 				<div class="content">
@@ -65,12 +66,31 @@
 					<br />
 					<div class="footer">
 						<a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=1">首页</a>
+						
+						<c:if test="${NewsPage.currPage eq 1}">
+							上一页
+						</c:if>
+						<c:if test="${NewsPage.currPage != 1}">
+							<a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=${NewsPage.currPage - 1}">上一页</a>
+						</c:if>
+						
 						<c:forEach begin="1" end="${NewsPage.totalPage}" var="pageNum">
-							<a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=${pageNum}">${pageNum}</a>
+							<c:if test="${NewsPage.currPage eq pageNum}">
+								${pageNum}
+							</c:if>
+							<c:if test="${NewsPage.currPage != pageNum}">
+								<a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=${pageNum}">${pageNum}</a>
+							</c:if>
 						</c:forEach>
+						
+						<c:if test="${NewsPage.currPage eq NewsPage.totalPage}">
+							下一页
+						</c:if>
+						<c:if test="${NewsPage.currPage != NewsPage.totalPage}">
+							<a href="${request.contextPath}/webs/NewsServlet?func=allNews&currpage=${NewsPage.currPage + 1}">下一页</a>
+						</c:if>
 						当前页：${NewsPage.currPage} 
-						每页记录数：${NewsPage.pageSize} 
-						总记录数：${NewsPage.totalSize} 
+						总条数：${NewsPage.totalSize}条 
 					</div>
 				</div>
 			</div>
