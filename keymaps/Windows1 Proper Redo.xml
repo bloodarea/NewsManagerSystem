@@ -8,4 +8,7 @@
   <action id="ExpandLiveTemplateCustom">
     <keyboard-shortcut first-keystroke="tab" />
   </action>
+  <action id="ParameterInfo">
+    <keyboard-shortcut first-keystroke="alt slash" />
+  </action>
 </keymap>
