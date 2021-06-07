@@ -8,7 +8,11 @@
   <action id="ExpandLiveTemplateCustom">
     <keyboard-shortcut first-keystroke="tab" />
   </action>
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="ctrl t" />
+  </action>
   <action id="ParameterInfo">
     <keyboard-shortcut first-keystroke="alt slash" />
   </action>
+  <action id="Vcs.UpdateProject" />
 </keymap>
